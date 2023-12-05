@@ -1,9 +1,14 @@
 package com.diegoesc.springboot.form.app.models.domain;
 
-public class User {
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
+public class User {
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String email;
 
     public String getUsername() {
