@@ -21,7 +21,7 @@ public class FormController {
         User user = new User();
         user.setName("Diego");
         user.setLastName("Escobedo");
-        user.setId("ID-TEST-pepe.pica.papas.con.un.pico");
+        user.setId("17.435.978-D");
         model.addAttribute("title", "User form");
         model.addAttribute("user", user);
         return "form";
