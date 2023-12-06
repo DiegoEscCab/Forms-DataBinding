@@ -15,6 +15,13 @@
         <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
     </div>
     <div>
+        <label for="account">Account</label>
+        <div>
+            <input type="text"  id="account" th:field="*{account}">
+        </div>
+        <div th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></div>
+    </div>
+    <div>
         <label for="id">ID</label>
         <div>
             <input type="text"  id="id" th:field="*{id}">

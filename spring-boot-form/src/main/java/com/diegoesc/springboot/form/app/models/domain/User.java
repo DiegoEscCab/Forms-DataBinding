@@ -1,6 +1,7 @@
 package com.diegoesc.springboot.form.app.models.domain;
 
 import com.diegoesc.springboot.form.app.validation.RegexIdentification;
+import com.diegoesc.springboot.form.app.validation.Required;
 import jakarta.validation.constraints.*;
 
 public class User {
@@ -9,7 +10,7 @@ public class User {
     private String id;
     //@NotEmpty
     private String name;
-    @NotEmpty
+    @Required
     private String lastName;
     @NotBlank
     @Size(min = 3, max = 10)
@@ -19,6 +20,10 @@ public class User {
     @NotEmpty
     @Email
     private String email;
+    @NotNull
+    @Min(5)
+    @Max(10)
+    private  Integer account;
     public String getUsername() {
         return username;
     }
@@ -43,4 +48,6 @@ public class User {
     public void setLastName(String lastName) {this.lastName = lastName;}
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
+    public Integer getAccount() { return account; }
+    public void setAccount(Integer account) { this.account = account; }
 }
