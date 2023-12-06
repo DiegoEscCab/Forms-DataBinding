@@ -1,19 +1,18 @@
 package com.diegoesc.springboot.form.app.models.domain;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import com.diegoesc.springboot.form.app.validation.RegexIdentification;
+import jakarta.validation.constraints.*;
 
 public class User {
     //@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+    @RegexIdentification
     private String id;
     //@NotEmpty
     private String name;
     @NotEmpty
     private String lastName;
-    @NotEmpty
-    @Size(min = 3, max = 25)
+    @NotBlank
+    @Size(min = 3, max = 10)
     private String username;
     @NotEmpty
     private String password;

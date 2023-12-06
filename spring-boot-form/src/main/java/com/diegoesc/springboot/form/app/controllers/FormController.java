@@ -1,10 +1,14 @@
 package com.diegoesc.springboot.form.app.controllers;
 
+import com.diegoesc.springboot.form.app.validation.ValidationUser;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.diegoesc.springboot.form.app.models.domain.User;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -16,6 +20,14 @@ import java.util.Map;
 @Controller
 @SessionAttributes("user")
 public class FormController {
+    @Autowired
+    private ValidationUser validation;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.addValidators(validation);
+    }
+
     @GetMapping("/form")
     public String form(Model model) {
         User user = new User();
@@ -32,6 +44,8 @@ public class FormController {
                           BindingResult result,
                           Model model,
                           SessionStatus status) {
+//        validation.validate(user, result);
+
         model.addAttribute("title", "Form submitted");
 
         if (result.hasErrors()) {
