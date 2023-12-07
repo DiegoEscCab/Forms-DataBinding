@@ -3,6 +3,9 @@ package com.diegoesc.springboot.form.app.models.domain;
 import com.diegoesc.springboot.form.app.validation.RegexIdentification;
 import com.diegoesc.springboot.form.app.validation.Required;
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class User {
     //@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
@@ -24,6 +27,10 @@ public class User {
     @Min(5)
     @Max(10)
     private  Integer account;
+    @NotNull
+    @PastOrPresent
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthDate;
     public String getUsername() {
         return username;
     }
@@ -50,4 +57,6 @@ public class User {
     public void setId(String id) { this.id = id; }
     public Integer getAccount() { return account; }
     public void setAccount(Integer account) { this.account = account; }
+    public Date getBirthDate() { return birthDate; }
+    public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
 }
