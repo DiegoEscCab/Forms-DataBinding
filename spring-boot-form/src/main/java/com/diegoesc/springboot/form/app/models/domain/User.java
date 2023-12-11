@@ -31,6 +31,8 @@ public class User {
     @PastOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
+    @NotEmpty
+    private String country;
     public String getUsername() {
         return username;
     }
@@ -59,4 +61,11 @@ public class User {
     public void setAccount(Integer account) { this.account = account; }
     public Date getBirthDate() { return birthDate; }
     public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }
