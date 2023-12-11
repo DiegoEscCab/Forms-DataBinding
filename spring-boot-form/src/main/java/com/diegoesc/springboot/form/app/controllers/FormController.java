@@ -2,6 +2,7 @@ package com.diegoesc.springboot.form.app.controllers;
 
 import com.diegoesc.springboot.form.app.editors.EditorCapsName;
 import com.diegoesc.springboot.form.app.models.domain.Country;
+import com.diegoesc.springboot.form.app.services.ServiceCountry;
 import com.diegoesc.springboot.form.app.validation.ValidationUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import java.util.Map;
 public class FormController {
     @Autowired
     private ValidationUser validation;
+    @Autowired
+    private ServiceCountry serviceCountry;
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
@@ -42,14 +45,7 @@ public class FormController {
     }
     @ModelAttribute("countryList")
     public List<Country> countryList(){
-        return Arrays.asList(
-                new Country(1,"MX","Mexico"),
-                new Country(2,"US","United States of America"),
-                new Country(3,"CL","Chile"),
-                new Country(4,"AR","Argentina"),
-                new Country(5,"CO","Colombia"),
-                new Country(6,"IT","Italy"),
-                new Country(7,"PT","Portugal"));
+        return serviceCountry.list();
     }
     @ModelAttribute("countrys")
     public List<String> countrys(){
