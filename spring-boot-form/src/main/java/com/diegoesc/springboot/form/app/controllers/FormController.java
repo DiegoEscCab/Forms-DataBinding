@@ -1,6 +1,7 @@
 package com.diegoesc.springboot.form.app.controllers;
 
 import com.diegoesc.springboot.form.app.editors.EditorCapsName;
+import com.diegoesc.springboot.form.app.models.domain.Country;
 import com.diegoesc.springboot.form.app.validation.ValidationUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import com.diegoesc.springboot.form.app.models.domain.User;
 import org.springframework.web.bind.support.SessionStatus;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @SessionAttributes("user")
@@ -37,10 +40,33 @@ public class FormController {
         model.addAttribute("user", user);
         return "form";
     }
-
+    @ModelAttribute("countryList")
+    public List<Country> countryList(){
+        return Arrays.asList(
+                new Country(1,"MX","Mexico"),
+                new Country(2,"US","United States of America"),
+                new Country(3,"CL","Chile"),
+                new Country(4,"AR","Argentina"),
+                new Country(5,"CO","Colombia"),
+                new Country(6,"IT","Italy"),
+                new Country(7,"PT","Portugal"));
+    }
     @ModelAttribute("countrys")
     public List<String> countrys(){
         return Arrays.asList("Mexico","United States of America", "Chile", "Argentina","Colombia","Italy","Portugal");
+    }
+
+    @ModelAttribute("countryMap")
+    public Map<String, String> countrysMap(){
+        Map<String, String> countrys = new HashMap<String, String>();
+        countrys.put("MX", "Mexico");
+        countrys.put("US", "United States of America");
+        countrys.put("CL", "Chile");
+        countrys.put("AR", "Argentina");
+        countrys.put("CO", "Colombia");
+        countrys.put("IT", "Italy");
+        countrys.put("PT", "Portugal");
+        return countrys;
     }
 
     @PostMapping("/form")

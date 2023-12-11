@@ -2,6 +2,7 @@ package com.diegoesc.springboot.form.app.models.domain;
 
 import com.diegoesc.springboot.form.app.validation.RegexIdentification;
 import com.diegoesc.springboot.form.app.validation.Required;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,8 +32,8 @@ public class User {
     @PastOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
-    @NotEmpty
-    private String country;
+    @Valid
+    private Country country;
     public String getUsername() {
         return username;
     }
@@ -61,11 +62,6 @@ public class User {
     public void setAccount(Integer account) { this.account = account; }
     public Date getBirthDate() { return birthDate; }
     public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    public Country getCountry() { return country; }
+    public void setCountry(Country country) { this.country = country; }
 }

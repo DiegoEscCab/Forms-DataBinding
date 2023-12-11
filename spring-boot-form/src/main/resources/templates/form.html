@@ -8,11 +8,11 @@
 <h3 th:text="${title}"></h3>
 <form th:action="@{/form}" th:object="${user}" method="post">
     <div>
-        <select id="country" th:field="*{country}">
+        <select id="country.id" th:field="*{country.id}">
             <option value="">-- Select --</option>
-        <option th:each="country: ${countrys}" th:text="${country}" th:value="${country}"></option>
+        <option th:each="country: ${countryList}" th:text="${country.name}" th:value="${country.id}"></option>
         </select>
-        <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+        <div th:if="${#fields.hasErrors('country.id')}" th:errors="*{country.id}"></div>
     </div>
     <div>
         <label for="username">Username</label>
