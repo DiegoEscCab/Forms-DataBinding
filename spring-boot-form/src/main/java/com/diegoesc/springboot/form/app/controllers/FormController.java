@@ -1,6 +1,7 @@
 package com.diegoesc.springboot.form.app.controllers;
 
 import com.diegoesc.springboot.form.app.editors.EditorCapsName;
+import com.diegoesc.springboot.form.app.editors.EditorPropertyCountry;
 import com.diegoesc.springboot.form.app.models.domain.Country;
 import com.diegoesc.springboot.form.app.services.ServiceCountry;
 import com.diegoesc.springboot.form.app.validation.ValidationUser;
@@ -13,10 +14,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import com.diegoesc.springboot.form.app.models.domain.User;
 import org.springframework.web.bind.support.SessionStatus;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 @Controller
 @SessionAttributes("user")
@@ -25,12 +24,15 @@ public class FormController {
     private ValidationUser validation;
     @Autowired
     private ServiceCountry serviceCountry;
+    @Autowired
+    private EditorPropertyCountry editorPropertyCountry;
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.addValidators(validation);
 
         binder.registerCustomEditor(String.class, "name", new EditorCapsName());
+        binder.registerCustomEditor(Country.class,"country", editorPropertyCountry);
     }
 
     @GetMapping("/form")
@@ -46,6 +48,15 @@ public class FormController {
     @ModelAttribute("countryList")
     public List<Country> countryList(){
         return serviceCountry.list();
+    }
+
+    @ModelAttribute("stringRoleString")
+    public List<String> stringRoleString(){
+        List<String> roles = new ArrayList<>();
+        roles.add("ROLE_ADMIN");
+        roles.add("ROLE_USER");
+        roles.add("ROLE_MOD");
+        return roles;
     }
     @ModelAttribute("countrys")
     public List<String> countrys(){

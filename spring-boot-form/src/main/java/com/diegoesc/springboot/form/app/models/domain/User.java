@@ -7,6 +7,7 @@ import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     //@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
@@ -32,8 +33,10 @@ public class User {
     @PastOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
-    @Valid
+    @NotNull
     private Country country;
+    @NotEmpty
+    private List<String> roles;
     public String getUsername() {
         return username;
     }
@@ -64,4 +67,6 @@ public class User {
     public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
     public Country getCountry() { return country; }
     public void setCountry(Country country) { this.country = country; }
+    public List<String> getRoles() { return roles; }
+    public void setRoles(List<String> roles) { this.roles = roles; }
 }

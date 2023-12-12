@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
@@ -8,6 +8,8 @@
 <h3 th:text="${title}"></h3>
 <ul>
     <li th:text="${user.country.id}"></li>
+    <li th:text="${user.country.name}"></li>
+    <li th:text="${user.country.code}"></li>
     <li th:text="${user.username}"></li>
     <li th:text="${user.account}"></li>
     <li th:text="${user.id}"></li>
@@ -17,5 +19,11 @@
     <li th:text="${user.email}"></li>
     <li th:text="${#calendars.format(user.birthDate, 'dd-MM-yyyy')}"></li>
 </ul>
+<div> Roles</div>
+<ul>
+    <li th:each="role: ${user.roles}" th:text="${role}"></li>
+</ul>
+
+
 </body>
 </html>
