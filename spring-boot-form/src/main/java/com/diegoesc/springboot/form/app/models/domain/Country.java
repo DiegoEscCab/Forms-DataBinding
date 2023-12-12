@@ -3,7 +3,7 @@ package com.diegoesc.springboot.form.app.models.domain;
 import jakarta.validation.constraints.NotNull;
 
 public class Country {
-    @NotNull
+
     private Integer Id;
     private String code;
     private String name;
