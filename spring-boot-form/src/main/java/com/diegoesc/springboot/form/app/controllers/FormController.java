@@ -88,6 +88,11 @@ public class FormController {
         countrys.put("PT", "Portugal");
         return countrys;
     }
+
+    @ModelAttribute("gender")
+    public List<String> gender(){
+        return Arrays.asList("Male","Female");
+    }
     @GetMapping("/form")
     public String form(Model model) {
         User user = new User();

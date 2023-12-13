@@ -37,6 +37,8 @@ public class User {
     @NotEmpty
     private List<Role> roles;
     private Boolean userEnable;
+    @NotEmpty
+    private String gender;
     public String getUsername() {
         return username;
     }
@@ -71,4 +73,6 @@ public class User {
     public void setRoles(List<Role> roles) { this.roles = roles; }
     public Boolean getUserEnable() { return userEnable; }
     public void setUserEnable(Boolean userEnable) { this.userEnable = userEnable; }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 }

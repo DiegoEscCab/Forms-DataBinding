@@ -19,6 +19,7 @@
     <li th:text="'Password: ' + ${user.password}"></li>
     <li th:text="'Email: ' + ${user.email}"></li>
     <li th:text="'Birth Date: ' + ${#calendars.format(user.birthDate, 'dd-MM-yyyy')}"></li>
+    <li th:text="'Gender: ' + ${user.gender}"></li>
 </ul>
 <div> Roles</div>
 <ul>
