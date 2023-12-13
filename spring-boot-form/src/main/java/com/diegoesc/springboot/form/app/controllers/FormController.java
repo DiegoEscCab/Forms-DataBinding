@@ -44,16 +44,7 @@ public class FormController {
         binder.registerCustomEditor(Role.class, "roles", editorRoles);
     }
 
-    @GetMapping("/form")
-    public String form(Model model) {
-        User user = new User();
-        user.setName("Diego");
-        user.setLastName("Escobedo");
-        user.setId("17.435.978-D");
-        model.addAttribute("title", "User form");
-        model.addAttribute("user", user);
-        return "form";
-    }
+
     @ModelAttribute("stringRoles")
     public List<Role> roleList(){
         return this.roleService.toList();
@@ -97,7 +88,17 @@ public class FormController {
         countrys.put("PT", "Portugal");
         return countrys;
     }
-
+    @GetMapping("/form")
+    public String form(Model model) {
+        User user = new User();
+        user.setName("Diego");
+        user.setLastName("Escobedo");
+        user.setId("17.435.978-D");
+        user.setUserEnable(true);
+        model.addAttribute("title", "User form");
+        model.addAttribute("user", user);
+        return "form";
+    }
     @PostMapping("/form")
     public String process(@Valid User user,
                           BindingResult result,
