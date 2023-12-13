@@ -2,7 +2,6 @@ package com.diegoesc.springboot.form.app.models.domain;
 
 import com.diegoesc.springboot.form.app.validation.RegexIdentification;
 import com.diegoesc.springboot.form.app.validation.Required;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +35,7 @@ public class User {
     @NotNull
     private Country country;
     @NotEmpty
-    private List<String> roles;
+    private List<Role> roles;
     public String getUsername() {
         return username;
     }
@@ -67,6 +66,6 @@ public class User {
     public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
     public Country getCountry() { return country; }
     public void setCountry(Country country) { this.country = country; }
-    public List<String> getRoles() { return roles; }
-    public void setRoles(List<String> roles) { this.roles = roles; }
+    public List<Role> getRoles() { return roles; }
+    public void setRoles(List<Role> roles) { this.roles = roles; }
 }

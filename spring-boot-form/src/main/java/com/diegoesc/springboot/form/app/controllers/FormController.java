@@ -2,7 +2,10 @@ package com.diegoesc.springboot.form.app.controllers;
 
 import com.diegoesc.springboot.form.app.editors.EditorCapsName;
 import com.diegoesc.springboot.form.app.editors.EditorPropertyCountry;
+import com.diegoesc.springboot.form.app.editors.EditorRoles;
 import com.diegoesc.springboot.form.app.models.domain.Country;
+import com.diegoesc.springboot.form.app.models.domain.Role;
+import com.diegoesc.springboot.form.app.services.RoleService;
 import com.diegoesc.springboot.form.app.services.ServiceCountry;
 import com.diegoesc.springboot.form.app.validation.ValidationUser;
 import jakarta.validation.Valid;
@@ -25,7 +28,12 @@ public class FormController {
     @Autowired
     private ServiceCountry serviceCountry;
     @Autowired
+    private RoleService roleService;
+    @Autowired
     private EditorPropertyCountry editorPropertyCountry;
+
+    @Autowired
+    private EditorRoles editorRoles;
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
@@ -33,6 +41,7 @@ public class FormController {
 
         binder.registerCustomEditor(String.class, "name", new EditorCapsName());
         binder.registerCustomEditor(Country.class,"country", editorPropertyCountry);
+        binder.registerCustomEditor(Role.class, "roles", editorRoles);
     }
 
     @GetMapping("/form")
@@ -45,6 +54,11 @@ public class FormController {
         model.addAttribute("user", user);
         return "form";
     }
+    @ModelAttribute("stringRoles")
+    public List<Role> roleList(){
+        return this.roleService.toList();
+    }
+
     @ModelAttribute("countryList")
     public List<Country> countryList(){
         return serviceCountry.list();
