@@ -7,17 +7,18 @@
 <body>
 <h3 th:text="${title}"></h3>
 <ul>
-    <li th:text="${user.country.id}"></li>
-    <li th:text="${user.country.name}"></li>
-    <li th:text="${user.country.code}"></li>
-    <li th:text="${user.username}"></li>
-    <li th:text="${user.account}"></li>
-    <li th:text="${user.id}"></li>
-    <li th:text="${user.name}"></li>
-    <li th:text="${user.lastName}"></li>
-    <li th:text="${user.password}"></li>
-    <li th:text="${user.email}"></li>
-    <li th:text="${#calendars.format(user.birthDate, 'dd-MM-yyyy')}"></li>
+    <li th:text="'Enable: ' + ${user.userEnable}"></li>
+    <li th:text="'Country ID: ' + ${user.country.id}"></li>
+    <li th:text="'Country: ' + ${user.country.name}"></li>
+    <li th:text="'Country Tag: ' + ${user.country.code}"></li>
+    <li th:text="'Username: ' + ${user.username}"></li>
+    <li th:text="'Account: ' + ${user.account}"></li>
+    <li th:text="'User ID: ' + ${user.id}"></li>
+    <li th:text="'Name: ' + ${user.name}"></li>
+    <li th:text="'Last Name: ' + ${user.lastName}"></li>
+    <li th:text="'Password: ' + ${user.password}"></li>
+    <li th:text="'Email: ' + ${user.email}"></li>
+    <li th:text="'Birth Date: ' + ${#calendars.format(user.birthDate, 'dd-MM-yyyy')}"></li>
 </ul>
 <div> Roles</div>
 <ul>
