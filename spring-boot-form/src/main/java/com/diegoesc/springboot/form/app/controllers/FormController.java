@@ -31,10 +31,8 @@ public class FormController {
     private RoleService roleService;
     @Autowired
     private EditorPropertyCountry editorPropertyCountry;
-
     @Autowired
     private EditorRoles editorRoles;
-
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.addValidators(validation);
@@ -43,18 +41,14 @@ public class FormController {
         binder.registerCustomEditor(Country.class,"country", editorPropertyCountry);
         binder.registerCustomEditor(Role.class, "roles", editorRoles);
     }
-
-
     @ModelAttribute("stringRoles")
     public List<Role> roleList(){
         return this.roleService.toList();
     }
-
     @ModelAttribute("countryList")
     public List<Country> countryList(){
         return serviceCountry.list();
     }
-
     @ModelAttribute("stringRoleString")
     public List<String> stringRoleString(){
         List<String> roles = new ArrayList<>();
@@ -75,7 +69,6 @@ public class FormController {
     public List<String> countrys(){
         return Arrays.asList("Mexico","United States of America", "Chile", "Argentina","Colombia","Italy","Portugal");
     }
-
     @ModelAttribute("countryMap")
     public Map<String, String> countrysMap(){
         Map<String, String> countrys = new HashMap<String, String>();
@@ -88,7 +81,6 @@ public class FormController {
         countrys.put("PT", "Portugal");
         return countrys;
     }
-
     @ModelAttribute("gender")
     public List<String> gender(){
         return Arrays.asList("Male","Female");
@@ -100,6 +92,7 @@ public class FormController {
         user.setLastName("Escobedo");
         user.setId("17.435.978-D");
         user.setUserEnable(true);
+        user.setSecretValue("This is a secret value...");
         model.addAttribute("title", "User form");
         model.addAttribute("user", user);
         return "form";
@@ -110,9 +103,7 @@ public class FormController {
                           Model model,
                           SessionStatus status) {
 //        validation.validate(user, result);
-
         model.addAttribute("title", "Form submitted");
-
         if (result.hasErrors()) {
 //            Map<String, String> errors = new HashMap<>();
 //            result.getFieldErrors().forEach(err -> {

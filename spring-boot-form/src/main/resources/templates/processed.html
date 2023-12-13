@@ -20,6 +20,7 @@
     <li th:text="'Email: ' + ${user.email}"></li>
     <li th:text="'Birth Date: ' + ${#calendars.format(user.birthDate, 'dd-MM-yyyy')}"></li>
     <li th:text="'Gender: ' + ${user.gender}"></li>
+    <li th:text="'Secret Value: ' + ${user.secretValue}"></li>
 </ul>
 <div> Roles</div>
 <ul>
